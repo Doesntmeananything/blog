@@ -14,7 +14,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
 
   return {
-    paths: posts.map((row) => `/${row.slug}`),
+    paths: posts.map((post) => `/${post.slug}`),
     fallback: true,
   };
 };
