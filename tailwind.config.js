@@ -3,8 +3,15 @@ module.exports = {
   darkMode: "class",
   theme: {
     fontFamily: {
-      header: ["LibreCaslonText", "ui-serif", "Georgia"],
-      sans: ["Wotfard", "Helvetica", "Arial", "ui-sans-serif", "system-ui"],
+      header: ['"Libre Caslon Text"', "Georgia", "ui-serif"],
+      sans: [
+        "Wotfard",
+        "Helvetica",
+        "Futura",
+        "Arial",
+        "ui-sans-serif",
+        "system-ui",
+      ],
     },
     extend: {
       colors: {
