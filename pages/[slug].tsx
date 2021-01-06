@@ -50,13 +50,12 @@ const PostPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!post) return null;
 
-  const formattedDate = new Date(
-    post.date.split("-").join()
-  ).toLocaleDateString();
+  const { date, title } = post;
+  const formattedDate = new Date(date.split("-").join()).toLocaleDateString();
 
   return (
     <Layout>
-      <BlogPost title={post.title} date={formattedDate} notionBlocks={blocks} />
+      <BlogPost title={title} date={formattedDate} notionBlocks={blocks} />
     </Layout>
   );
 };
