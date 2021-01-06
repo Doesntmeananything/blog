@@ -21,7 +21,7 @@ export const ThemeToggle = ({ ...props }: Props) => {
   }, []);
 
   const toggleTheme = () => {
-    const html = document.querySelector("html")!;
+    const html = document.documentElement;
 
     if (localStorage.theme === "light") {
       localStorage.setItem("theme", "dark");
