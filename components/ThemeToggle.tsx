@@ -1,9 +1,12 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, useState } from "react";
+import { useTheme } from "next-themes";
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  useEffect,
+  useState,
+} from "react";
 
-import { useBrowserLayoutEffect } from "../hooks";
 import { Moon, Sun } from "./icons";
-
-type Theme = "light" | "dark" | null;
 
 interface Props
   extends DetailedHTMLProps<
@@ -12,31 +15,27 @@ interface Props
   > {}
 
 export const ThemeToggle = ({ ...props }: Props) => {
-  const [theme, setTheme] = useState<Theme>(null);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  const label = `Activate ${theme} mode`;
+  useEffect(() => setMounted(true), []);
 
-  useBrowserLayoutEffect(() => {
-    setTheme(localStorage.getItem("theme") as Theme);
-  }, []);
+  if (!mounted) return null;
+
+  const newTheme = theme === "light" ? "dark" : "light";
+  const label = `Activate ${newTheme} mode`;
 
   const toggleTheme = () => {
-    const html = document.documentElement;
-
-    if (localStorage.theme === "light") {
-      localStorage.setItem("theme", "dark");
-      html.className = "dark";
-      setTheme("dark");
-    } else {
-      localStorage.setItem("theme", "light");
-      html.className = "light";
-      setTheme("light");
-    }
+    setTheme(newTheme);
   };
 
   return (
     <button onClick={toggleTheme} aria-label={label} title={label} {...props}>
-      {theme === "dark" ? <Sun /> : <Moon />}
+      {theme === "dark" ? (
+        <Sun className="transition-colors duration-200 ease-in-out stroke-current hover:text-yellow-500" />
+      ) : (
+        <Moon className="transition-colors duration-200 ease-in-out stroke-current hover:text-purple-500" />
+      )}
     </button>
   );
 };

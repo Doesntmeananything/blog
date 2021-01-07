@@ -1,64 +1,54 @@
-import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
-const themeDetector = `
-!(function () {
-  try {
-    var d = document.documentElement.classList;
-    d.remove("light", "dark");
-    var e = localStorage.getItem("theme");
-    if (!e) return localStorage.setItem("theme", "light"), d.add("light");
-    if ("system" === e) {
-      var t = "(prefers-color-scheme: dark)",
-        m = window.matchMedia(t);
-      m.media !== t || m.matches ? d.add("dark") : d.add("light");
-    } else d.add(e);
-  } catch (e) {}
-})();
+const secretMessage = `
+const inputText = "DMA";
+figlet(inputText, '3D-ASCII', function(err, art) {
+  if (err) {
+      console.error('error loading ascii');
+  }
+  console.log(art);
+});
 `;
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
-
-    return initialProps;
-  }
-
   render() {
     return (
       <Html lang="en">
         <Head>
           <link
             rel="preload"
-            href="/fonts/wotfard-semibold-webfont.woff2"
+            href="/fonts/libre-caslon-text-latin-700-normal.woff2"
             as="font"
             type="font/woff2"
-            crossOrigin=""
+            crossOrigin="anonymous"
           />
           <link
             rel="preload"
-            href="/fonts/wotfard-medium-webfont.woff2"
+            href="/fonts/wotfard-semibold-webfont.woff2"
             as="font"
             type="font/woff2"
-            crossOrigin=""
+            crossOrigin="anonymous"
           />
           <link
             rel="preload"
             href="/fonts/wotfard-regular-webfont.woff2"
             as="font"
             type="font/woff2"
-            crossOrigin=""
+            crossOrigin="anonymous"
           />
-          <script dangerouslySetInnerHTML={{ __html: themeDetector }} />
         </Head>
         <body>
           <Main />
           <NextScript />
+          <script
+            type="text/javascript"
+            src="https://unpkg.com/figlet@1.5.0/lib/figlet.js"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: secretMessage,
+            }}
+          />
         </body>
       </Html>
     );

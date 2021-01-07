@@ -8,7 +8,6 @@ import { BlockMapType } from "react-notion";
 
 import { getAllPosts, Post } from ".";
 import { BlogPost } from "../components/BlogPost";
-import { Layout } from "../components/Layout";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
@@ -53,10 +52,7 @@ const PostPage = ({
   const { date, title } = post;
   const formattedDate = new Date(date.split("-").join()).toLocaleDateString();
 
-  return (
-    <Layout>
-      <BlogPost title={title} date={formattedDate} notionBlocks={blocks} />
-    </Layout>
-  );
+  return <BlogPost title={title} date={formattedDate} notionBlocks={blocks} />;
 };
+
 export default PostPage;

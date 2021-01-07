@@ -1,17 +1,16 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   purge: ["./pages/**/*.tsx", "./components/**/*.tsx"],
   darkMode: "class",
   theme: {
     fontFamily: {
-      header: ['"Libre Caslon Text"', "Georgia", "ui-serif"],
-      sans: [
-        "Wotfard",
-        "Helvetica",
-        "Futura",
-        "Arial",
-        "ui-sans-serif",
-        "system-ui",
-      ],
+      header: ['"Libre Caslon Text"', ...fontFamily.serif],
+      sans: ["Wotfard", ...fontFamily.sans],
     },
     extend: {
       colors: {
@@ -30,10 +29,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      stroke: ["hover", "focus"],
-      transitionProperty: ["hover", "focus"],
+      stroke: ["hover"],
+      transitionProperty: ["hover"],
       translate: ["group-hover"],
-      animation: ["hover"],
     },
   },
   plugins: [],

@@ -24,7 +24,7 @@ export const Layout = ({ children }: Props) => (
           rel="noopener noreferrer"
           className="nav-item"
         >
-          <GitHub className="transition-colors duration-200 ease-in-out stroke-current hover:text-yellow-500" />
+          <GitHub className="transition-colors duration-200 ease-in-out stroke-current hover:text-green-500" />
         </a>
 
         <a

@@ -1,7 +1,6 @@
 import { InferGetStaticPropsType } from "next";
 
 import { Home } from "../components/Home";
-import { Layout } from "../components/Layout";
 
 export interface Post {
   id: string;
@@ -32,9 +31,6 @@ export const getStaticProps = async () => {
 
 const HomePage = ({
   posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <Layout>
-    <Home posts={posts} />
-  </Layout>
-);
+}: InferGetStaticPropsType<typeof getStaticProps>) => <Home posts={posts} />;
+
 export default HomePage;
