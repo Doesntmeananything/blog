@@ -2,11 +2,14 @@ import { useTheme } from "next-themes";
 import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
-  useEffect,
+  useLayoutEffect,
   useState,
 } from "react";
 
 import { Moon, Sun } from "./icons";
+
+const useBrowserEffect =
+  typeof window !== "undefined" ? useLayoutEffect : () => {};
 
 interface Props
   extends DetailedHTMLProps<
@@ -18,9 +21,7 @@ export const ThemeToggle = ({ ...props }: Props) => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
+  useBrowserEffect(() => setMounted(true), []);
 
   const newTheme = theme === "light" ? "dark" : "light";
   const label = `Activate ${newTheme} mode`;
@@ -31,11 +32,7 @@ export const ThemeToggle = ({ ...props }: Props) => {
 
   return (
     <button onClick={toggleTheme} aria-label={label} title={label} {...props}>
-      {theme === "dark" ? (
-        <Sun className="transition-colors duration-200 ease-in-out stroke-current hover:text-yellow-500" />
-      ) : (
-        <Moon className="transition-colors duration-200 ease-in-out stroke-current hover:text-purple-500" />
-      )}
+      {mounted && theme === "dark" ? <Sun /> : <Moon />}
     </button>
   );
 };
