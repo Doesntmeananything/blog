@@ -23,6 +23,7 @@ export const Layout = ({ children }: Props) => (
           target="_blank"
           rel="noopener noreferrer"
           className="nav-item"
+          aria-label="Link to the GitHub profile"
         >
           <GitHub className="transition-colors duration-200 ease-in-out stroke-current hover:text-green-500" />
         </a>
@@ -32,11 +33,12 @@ export const Layout = ({ children }: Props) => (
           target="_blank"
           rel="noopener noreferrer"
           className="nav-item"
+          aria-label="Link to the Twitter profile"
         >
           <Twitter className="transition-colors duration-200 ease-in-out stroke-current hover:text-blue-500" />
         </a>
 
-        <ThemeToggle className="nav-item" />
+        <ThemeToggle className="transition-colors duration-200 ease-in-out stroke-current nav-item hover:text-purple-500 dark:hover:text-yellow-500" />
       </nav>
     </header>
 
