@@ -42,7 +42,7 @@ class MyDocument extends Document {
           <NextScript />
           <script
             type="text/javascript"
-            src="https://unpkg.com/figlet@1.5.0/lib/figlet.js"
+            src="https://cdn.jsdelivr.net/npm/figlet@1.5.0/lib/figlet.min.js"
           ></script>
           <script
             dangerouslySetInnerHTML={{
