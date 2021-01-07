@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType } from "next";
+import { NextSeo } from "next-seo";
 
 import { Home } from "../components/Home";
 
@@ -31,6 +32,11 @@ export const getStaticProps = async () => {
 
 const HomePage = ({
   posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => <Home posts={posts} />;
+}: InferGetStaticPropsType<typeof getStaticProps>) => (
+  <>
+    <NextSeo title="Home" />
+    <Home posts={posts} />
+  </>
+);
 
 export default HomePage;

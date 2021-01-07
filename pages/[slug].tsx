@@ -4,6 +4,7 @@ import {
   GetStaticPropsResult,
   InferGetStaticPropsType,
 } from "next";
+import { NextSeo } from "next-seo";
 import { BlockMapType } from "react-notion";
 
 import { getAllPosts, Post } from ".";
@@ -52,7 +53,12 @@ const PostPage = ({
   const { date, title } = post;
   const formattedDate = new Date(date.split("-").join()).toLocaleDateString();
 
-  return <BlogPost title={title} date={formattedDate} notionBlocks={blocks} />;
+  return (
+    <>
+      <NextSeo title={title} />
+      <BlogPost title={title} date={formattedDate} notionBlocks={blocks} />
+    </>
+  );
 };
 
 export default PostPage;
