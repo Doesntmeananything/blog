@@ -15,7 +15,7 @@ export function createIcon({ svg, displayName }: Options) {
     })
   );
 
-  if (displayName) {
+  if (displayName && process.env.NODE_ENV === "development") {
     Component.displayName = displayName;
   }
 
