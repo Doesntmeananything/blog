@@ -38,7 +38,7 @@ export const Layout = ({ children }: Props) => (
           <Twitter className="transition-colors duration-200 ease-in-out stroke-current hover:text-blue-500" />
         </a>
 
-        <ThemeToggle className="transition-colors duration-200 ease-in-out stroke-current nav-item hover:text-purple-500 dark:hover:text-yellow-500" />
+        <ThemeToggle className="transition-colors duration-200 ease-in-out stroke-current nav-item hover:text-purple-500 dark:hover:text-yellow-500 focus:text-purple-500 dark:focus:text-yellow-500" />
       </nav>
     </header>
 
