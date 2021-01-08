@@ -10,7 +10,7 @@ interface Props {
 
 export const Layout = ({ children }: Props) => (
   <div className="grid max-w-screen-sm min-h-screen px-8 mx-auto md:max-w-screen-md grid-rows-layout">
-    <header className="flex items-center justify-between py-10 space-x-20 sm:items-baseline">
+    <header className="flex items-center justify-between py-10 space-x-7 sm:space-x-20 sm:items-baseline">
       <Link href="/">
         <a className="max-w-xs text-4xl font-bold sm:max-w-md">
           Doesn't Mean Anything
