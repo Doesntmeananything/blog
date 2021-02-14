@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "check-updates": "npx npm-check -u"
   },
   "dependencies": {
     "autoprefixer": "^10.2.4",
