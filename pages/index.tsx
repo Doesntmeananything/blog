@@ -12,9 +12,7 @@ export interface Post {
 }
 
 export const getAllPosts = async (): Promise<Post[]> => {
-  const posts = await fetch(
-    `${process.env.NOTION_API}/table/${process.env.NOTION_BLOG_ID}`
-  );
+  const posts = await fetch(`${process.env.NOTION_API}/table/${process.env.NOTION_BLOG_ID}`);
 
   return await posts.json();
 };
@@ -30,9 +28,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const HomePage = ({
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => (
+const HomePage = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
     <NextSeo title="Home" />
     <Home posts={posts} />
