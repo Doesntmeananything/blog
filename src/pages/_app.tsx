@@ -3,7 +3,7 @@ import { DefaultSeo } from "next-seo";
 import "react-notion/src/styles.css";
 import type { AppProps } from "next/app";
 
-import SEO from "../next-seo.config";
+import SEO from "../../next-seo.config";
 import { Layout } from "../components/Layout";
 import "../styles/globals.css";
 
