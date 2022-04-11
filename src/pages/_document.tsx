@@ -1,9 +1,5 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
-const secretMessage = `
-figlet("DMA", '3D-ASCII', (err, art) => err ? console.error('error loading ascii: ' + err) : console.log(art));
-`;
-
 const MyDocument = () => {
   return (
     <Html lang="en">
@@ -33,16 +29,6 @@ const MyDocument = () => {
       <body>
         <Main />
         <NextScript />
-        <script
-          defer
-          src="https://cdn.jsdelivr.net/npm/figlet@1.5.0/lib/figlet.min.js"
-          type="text/javascript"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: secretMessage,
-          }}
-        />
       </body>
     </Html>
   );
