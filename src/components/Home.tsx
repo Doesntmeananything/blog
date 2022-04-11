@@ -1,17 +1,15 @@
 import Link from "next/link";
+import type { PostMeta } from "../typings/post";
 
-import type { Post } from "../pages";
 import { ArrowRight } from "./icons";
 
 interface Props {
-  posts: Post[];
+  posts: PostMeta[];
 }
 
 export const Home = ({ posts }: Props) => (
   <main className="flex flex-col">
-    <h2 className="mb-12 text-lg font-semibold ">
-      Welcome to my thoughts, ideas, and work.
-    </h2>
+    <h2 className="mb-12 text-lg font-semibold ">Welcome to my thoughts, ideas, and work.</h2>
 
     <section>
       <h3 className="mb-1 text-xl font-semibold">Recently published</h3>
@@ -20,10 +18,10 @@ export const Home = ({ posts }: Props) => (
 
       <div className="space-y-8">
         {posts.map((post) => (
-          <article key={post.id} className="group">
+          <article key={post.title} className="group">
             <Link href={`/${encodeURIComponent(post.slug)}`}>
               <a>
-                <h4 className="flex items-center mb-2 text-lg font-semibold">
+                <h4 className="flex items-baseline mb-2 text-lg font-semibold">
                   {post.title}
                   <ArrowRight
                     aria-hidden="true"

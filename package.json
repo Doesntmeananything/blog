@@ -3,23 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next-remote-watch ./posts",
     "build": "next build",
     "start": "next start",
     "check-updates": "npx npm-check -u"
   },
   "dependencies": {
     "next": "^12.0.9",
+    "next-mdx-remote": "^4.0.2",
     "next-seo": "^4.29.0",
     "next-themes": "0.0.10",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-notion": "^0.9.3"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.27",
     "@types/react": "^17.0.2",
     "autoprefixer": "^10.4.4",
+    "next-remote-watch": "^1.0.0",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23",
     "typescript": "^4.5.5"

@@ -1,30 +1,21 @@
-import { InferGetStaticPropsType } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { NextSeo } from "next-seo";
 
 import { Home } from "../components/Home";
+import { collectPostSources } from "../scripts/posts";
+import type { PostMeta } from "../typings/post";
 
-export interface Post {
-  id: string;
-  slug: string;
-  date: string;
-  title: string;
-  description: string;
-}
+export const getStaticProps: GetStaticProps<{ posts: PostMeta[] }> = async () => {
+  const postSources = await collectPostSources();
+  const postsMeta = postSources.map((source) => source.frontmatter as unknown as PostMeta);
 
-export const getAllPosts = async (): Promise<Post[]> => {
-  const posts = await fetch(`${process.env.NOTION_API}/table/${process.env.NOTION_BLOG_ID}`);
-
-  return await posts.json();
-};
-
-export const getStaticProps = async () => {
-  const posts = await getAllPosts();
+  // Sort posts by date in descending order
+  const posts = postsMeta.sort(
+    (postA, postB) => new Date(postB.date).getTime() - new Date(postA.date).getTime()
+  );
 
   return {
-    props: {
-      posts,
-    },
-    revalidate: 10,
+    props: { posts },
   };
 };
 

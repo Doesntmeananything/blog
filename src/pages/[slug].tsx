@@ -1,62 +1,46 @@
-import {
-  GetStaticPaths,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-  InferGetStaticPropsType,
-} from "next";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { NextSeo } from "next-seo";
-import { BlockMapType } from "react-notion";
 
-import { getAllPosts, Post } from ".";
 import { BlogPost } from "../components/BlogPost";
+import { collectPostSources } from "../scripts/posts";
+import { PostMeta } from "../typings/post";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts();
+  const postSources = await collectPostSources();
+  const paths = postSources.map((source) => "/" + (source.frontmatter as unknown as PostMeta).slug);
 
   return {
-    paths: posts.map((post) => `/${post.slug}`),
-    fallback: true,
+    paths,
+    fallback: false,
   };
 };
 
-type StaticPropsResult = Promise<
-  GetStaticPropsResult<{ blocks: BlockMapType; post: Post }>
->;
+export const getStaticProps: GetStaticProps<{
+  source: MDXRemoteSerializeResult<Record<string, unknown>>;
+}> = async ({ params }) => {
+  const postSources = await collectPostSources();
+  const source = postSources.find((source) => source.frontmatter?.slug === params?.slug);
 
-export const getStaticProps = async ({
-  params,
-}: GetStaticPropsContext): StaticPropsResult => {
-  const posts = await getAllPosts();
-  const post = posts.find((t) => t.slug === params?.slug);
-
-  if (!post) return { notFound: true };
-
-  const blocks: BlockMapType = await fetch(
-    `${process.env.NOTION_API}/page/${post.id}`
-  ).then((res) => res.json());
+  if (!source) return { notFound: true };
 
   return {
     props: {
-      blocks,
-      post,
+      source,
     },
-    revalidate: 10,
   };
 };
 
-const PostPage = ({
-  blocks,
-  post,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (!post) return null;
+const PostPage = ({ source }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  if (!source.frontmatter) return;
 
-  const { date, title } = post;
-  const formattedDate = new Date(date.split("-").join()).toLocaleDateString();
+  const { date, title } = source.frontmatter;
+  const formattedDate = new Date(date).toLocaleDateString();
 
   return (
     <>
       <NextSeo title={title} />
-      <BlogPost title={title} date={formattedDate} notionBlocks={blocks} />
+      <BlogPost title={title} date={formattedDate} source={source} />
     </>
   );
 };
