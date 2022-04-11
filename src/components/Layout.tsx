@@ -9,40 +9,40 @@ interface Props {
 }
 
 export const Layout = ({ children }: Props) => (
-  <div className="grid max-w-screen-sm min-h-screen px-8 mx-auto md:max-w-screen-md grid-rows-layout">
-    <header className="flex items-center justify-between py-10 space-x-7 sm:space-x-20 sm:items-baseline">
+  <div className="mx-auto grid min-h-screen max-w-screen-sm grid-rows-layout px-8 md:max-w-screen-md">
+    <header className="flex items-center justify-between space-x-7 py-10 sm:items-baseline sm:space-x-20">
       <Link href="/">
-        <a className="max-w-xs text-4xl font-bold sm:max-w-md">Doesn't Mean Anything</a>
+        <a className="max-w-xs text-4xl font-bold sm:max-w-md">Doesn&apos;t Mean Anything</a>
       </Link>
 
-      <nav className="box-content flex flex-col space-y-3 text-2xl sm:space-y-0 sm:flex-row sm:space-x-4 sm:text-xl">
+      <nav className="box-content flex flex-col space-y-3 text-2xl sm:flex-row sm:space-y-0 sm:space-x-4 sm:text-xl">
         <a
-          href="https://github.com/doesntmeananything"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-item"
           aria-label="Link to the GitHub profile"
+          className="nav-item"
+          href="https://github.com/doesntmeananything"
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <GitHub className="transition-colors duration-200 ease-in-out stroke-current hover:text-green-500" />
+          <GitHub className="stroke-current transition-colors duration-200 ease-in-out hover:text-green-500" />
         </a>
 
         <a
-          href="https://twitter.com/andrey_krasnoff"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-item"
           aria-label="Link to the Twitter profile"
+          className="nav-item"
+          href="https://twitter.com/andrey_krasnoff"
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <Twitter className="transition-colors duration-200 ease-in-out stroke-current hover:text-blue-500" />
+          <Twitter className="stroke-current transition-colors duration-200 ease-in-out hover:text-blue-500" />
         </a>
 
-        <ThemeToggle className="transition-colors duration-200 ease-out stroke-current nav-item hover:text-purple-500 dark:hover:text-yellow-500 focus:text-purple-500 dark:focus:text-yellow-500" />
+        <ThemeToggle className="nav-item stroke-current transition-colors duration-200 ease-out hover:text-purple-500 focus:text-purple-500 dark:hover:text-yellow-500 dark:focus:text-yellow-500" />
       </nav>
     </header>
 
     {children}
 
-    <footer className="py-10 text-xs text-center">
+    <footer className="py-10 text-center text-xs">
       © {new Date().getFullYear()}, Andrey Krasnov
     </footer>
   </div>

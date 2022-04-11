@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "fs";
-import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
+
+import { serialize } from "next-mdx-remote/serialize";
 
 const POST_DIR_PATH = join(process.cwd(), "posts");
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import type { PostMeta } from "../typings/post";
 
 import { ArrowRight } from "./icons";

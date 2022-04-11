@@ -19,7 +19,7 @@ export const ThemeToggle = ({ ...props }: Props) => {
   };
 
   return (
-    <button onClick={toggleTheme} aria-label={label} title={label} {...props}>
+    <button aria-label={label} title={label} onClick={toggleTheme} {...props}>
       {mounted && resolvedTheme === "dark" ? <Sun /> : <Moon />}
     </button>
   );

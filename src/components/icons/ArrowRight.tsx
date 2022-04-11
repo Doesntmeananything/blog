@@ -3,13 +3,13 @@ import { createIcon } from "./createIcon";
 export const ArrowRight = createIcon({
   svg: (
     <svg
-      stroke="currentColor"
       fill="currentColor"
+      focusable="false"
+      fontSize="0.8em"
+      height="1em"
+      stroke="currentColor"
       strokeWidth="0"
       viewBox="0 0 448 512"
-      fontSize="0.8em"
-      focusable="false"
-      height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
     >

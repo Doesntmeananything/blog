@@ -40,7 +40,7 @@ const PostPage = ({ source }: InferGetStaticPropsType<typeof getStaticProps>) =>
   return (
     <>
       <NextSeo title={title} />
-      <BlogPost title={title} date={formattedDate} source={source} />
+      <BlogPost date={formattedDate} source={source} title={title} />
     </>
   );
 };

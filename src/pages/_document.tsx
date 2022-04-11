@@ -9,33 +9,34 @@ const MyDocument = () => {
     <Html lang="en">
       <Head>
         <link
-          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
           href="/fonts/libre-caslon-text-latin-700-normal.woff2"
-          as="font"
+          rel="preload"
           type="font/woff2"
-          crossOrigin="anonymous"
         />
         <link
-          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
           href="/fonts/wotfard-semibold-webfont.woff2"
-          as="font"
+          rel="preload"
           type="font/woff2"
-          crossOrigin="anonymous"
         />
         <link
-          rel="preload"
-          href="/fonts/wotfard-regular-webfont.woff2"
           as="font"
-          type="font/woff2"
           crossOrigin="anonymous"
+          href="/fonts/wotfard-regular-webfont.woff2"
+          rel="preload"
+          type="font/woff2"
         />
       </Head>
       <body>
         <Main />
         <NextScript />
         <script
-          type="text/javascript"
+          defer
           src="https://cdn.jsdelivr.net/npm/figlet@1.5.0/lib/figlet.min.js"
+          type="text/javascript"
         ></script>
         <script
           dangerouslySetInnerHTML={{
