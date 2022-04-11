@@ -1,11 +1,11 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+// @ts-check
+/**
+ * @type {import("tailwindcss/tailwind-config").TailwindConfig}
+ */
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-  purge: ["./pages/**/*.tsx", "./components/**/*.tsx"],
+  content: ["./src/**/*.{ts,tsx}"],
   darkMode: "class",
   theme: {
     fontFamily: {
@@ -25,13 +25,6 @@ module.exports = {
       gridTemplateRows: {
         layout: "auto 1fr auto",
       },
-    },
-  },
-  variants: {
-    extend: {
-      stroke: ["hover"],
-      transitionProperty: ["hover"],
-      translate: ["group-hover"],
     },
   },
   plugins: [],

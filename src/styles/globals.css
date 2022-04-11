@@ -50,24 +50,19 @@
   hr {
     @apply bg-gray-550 dark:bg-gray-350;
   }
+
+  article > p {
+    @apply mb-4 text-gray-550 dark:text-gray-350;
+  }
+
+  article > h2,
+  article > h3 {
+    @apply mt-8 mb-3 text-gray-750 dark:text-gray-150 text-2xl font-bold;
+  }
 }
 
 @layer components {
   .nav-item {
     @apply p-1 transition-shadow rounded focus:outline-none focus:ring;
   }
-}
-
-.notion {
-  @apply font-sans;
-}
-
-.notion-text {
-  @apply mb-4 text-gray-550 dark:text-gray-350;
-}
-
-.notion-h1,
-.notion-h2,
-.notion-h3 {
-  @apply mt-4 mb-1 text-gray-750 dark:text-gray-150;
 }

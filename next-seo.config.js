@@ -2,7 +2,7 @@ const title = "Doesn't Mean Anything";
 const description = "Welcome to my thoughts, ideas, and work.";
 
 const SEO = {
-  titleTemplate: `%s – ${title}`,
+  titleTemplate: `%s - ${title}`,
   title,
   description,
   canonical: "https://doesntmeananything.com/",
@@ -14,8 +14,7 @@ const SEO = {
     description,
     images: [
       {
-        url:
-          "https://pbs.twimg.com/profile_banners/1211220473725407232/1578950445/1500x500",
+        url: "https://pbs.twimg.com/profile_banners/1211220473725407232/1578950445/1500x500",
         alt: title,
         width: 1500,
         height: 500,
