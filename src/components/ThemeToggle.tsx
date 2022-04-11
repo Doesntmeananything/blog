@@ -3,16 +3,15 @@ import { ButtonHTMLAttributes, DetailedHTMLProps, useEffect, useState } from "re
 
 import { Moon, Sun } from "./icons";
 
-interface Props
-  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
+type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
 export const ThemeToggle = ({ ...props }: Props) => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
 
-  const newTheme = theme === "light" ? "dark" : "light";
+  const newTheme = resolvedTheme === "light" ? "dark" : "light";
   const label = `Activate ${newTheme} mode`;
 
   const toggleTheme = () => {
@@ -21,7 +20,7 @@ export const ThemeToggle = ({ ...props }: Props) => {
 
   return (
     <button onClick={toggleTheme} aria-label={label} title={label} {...props}>
-      {mounted && theme === "dark" ? <Sun /> : <Moon />}
+      {mounted && resolvedTheme === "dark" ? <Sun /> : <Moon />}
     </button>
   );
 };
