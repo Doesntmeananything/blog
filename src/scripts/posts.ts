@@ -5,11 +5,11 @@ import { serialize } from "next-mdx-remote/serialize";
 
 const POST_DIR_PATH = join(process.cwd(), "posts");
 
-export const collectPostSources = () => {
+export const collectMdxSourcePromises = () => {
   const postPaths = readdirSync(POST_DIR_PATH);
-  const postSourcePromises = postPaths.map((path) =>
+  const mdxSourcePromises = postPaths.map((path) =>
     serialize(readFileSync(join(POST_DIR_PATH, path)).toString(), { parseFrontmatter: true })
   );
 
-  return Promise.all(postSourcePromises);
+  return Promise.all(mdxSourcePromises);
 };

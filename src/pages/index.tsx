@@ -2,11 +2,11 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { NextSeo } from "next-seo";
 
 import { Home } from "../components/Home";
-import { collectPostSources } from "../scripts/posts";
+import { collectMdxSourcePromises } from "../scripts/posts";
 import type { PostMeta } from "../typings/post";
 
 export const getStaticProps: GetStaticProps<{ posts: PostMeta[] }> = async () => {
-  const postSources = await collectPostSources();
+  const postSources = await collectMdxSourcePromises();
   const postsMeta = postSources.map((source) => source.frontmatter as unknown as PostMeta);
 
   // Sort posts by date in descending order

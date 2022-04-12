@@ -3,11 +3,11 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { NextSeo } from "next-seo";
 
 import { BlogPost } from "../components/BlogPost";
-import { collectPostSources } from "../scripts/posts";
+import { collectMdxSourcePromises } from "../scripts/posts";
 import { PostMeta } from "../typings/post";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postSources = await collectPostSources();
+  const postSources = await collectMdxSourcePromises();
   const paths = postSources.map((source) => "/" + (source.frontmatter as unknown as PostMeta).slug);
 
   return {
@@ -19,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
 }> = async ({ params }) => {
-  const postSources = await collectPostSources();
+  const postSources = await collectMdxSourcePromises();
   const source = postSources.find((source) => source.frontmatter?.slug === params?.slug);
 
   if (!source) return { notFound: true };
