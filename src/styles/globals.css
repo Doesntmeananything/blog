@@ -57,12 +57,12 @@
 
   article > h2,
   article > h3 {
-    @apply mt-8 mb-3 text-gray-750 dark:text-gray-150 text-2xl font-bold;
+    @apply mt-8 mb-3 text-2xl font-bold text-gray-750 dark:text-gray-150;
   }
 }
 
 @layer components {
   .nav-item {
-    @apply p-1 transition-shadow rounded focus:outline-none focus:ring;
+    @apply rounded p-1 transition-shadow focus:outline-none focus:ring;
   }
 }
