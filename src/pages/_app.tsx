@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
@@ -24,6 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <DefaultSeo {...SEO} />
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </ThemeProvider>
   );
